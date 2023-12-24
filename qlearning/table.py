@@ -47,10 +47,6 @@ class Table():
         
         return value_list
     
-        """_summary_
-        action=[action] for get (key, cumulative rewward) across same action but different states.
-        or state=[state]
-        """
     
     def __get_state_id(self,state)->int:
         if state in self.__state_id_pairs:
