@@ -1,9 +1,12 @@
+import json
+
 class Table():
     def __init__(self):
         self.__table_dictionary={}
         self.__state_id_pairs=[]
         self.__action_id_pairs=[]
     
+    #Not implemented.
     def __repr__(self) -> str:
         t="     "
         for action in self.__action_id_pairs:
@@ -11,6 +14,21 @@ class Table():
                 t+=str(self[state,action])+"\n"
         
         return t
+    
+    def save_table(self,path:str):
+        file=open(path,"w+")
+        file.write(json.dumps({"__table_dictionary":self.__table_dictionary,
+                               "__state_id_pairs":self.__state_id_pairs,
+                               "__action_id_pairs":self.__action_id_pairs}))
+        file.close()
+        
+    def load_table(self,path:str):
+        file=open(path,"r+")
+        obj=json.loads(file.read())
+        
+        self.__table_dictionary=obj["__table_dictionary"]
+        self.__state_id_pairs=obj["__state_id_pairs"]
+        self.__action_id_pairs=obj["__action_id_pairs"]
     
     def build_table(self,observattion_space,action_space):
         for observation in observattion_space:
