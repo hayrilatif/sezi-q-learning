@@ -6,10 +6,10 @@ class EpsilonGreedy():
     def __init__(self,epsilon):
         self.epsilon=epsilon
         
-    def select_action(self,state,table:Table):
+    def select_action(self,state,table:Table,possible_actions):
         if random.random()>self.epsilon:
             #random
-            return random.choice(table.get_all_actions())
+            return random.choice(possible_actions)
         else:
             #greedy
             return table.get_optimal_action(state=state)
