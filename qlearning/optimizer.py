@@ -1,2 +1,3 @@
 def calculate_new_q_value(old_q,learning_rate,discount_factor,reward,new_state_max_q)->float:
+    """This method calculates updated Q value with Bellman equation. old_q:|Previous state-action Q value.|, learning_rate:|The speed of transition from old value to new.|, discount_factor:|Represents the contribution of the later rewards to the predicted cumulative (trajectory) reward.|, new_state_max_q:|Represents the best expected trajectory value (Q) for new state.|"""
     return (old_q*learning_rate)+(1-learning_rate)*(reward+new_state_max_q*discount_factor)
